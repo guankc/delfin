@@ -77,9 +77,9 @@ class NasHandler(object):
                 value = ''
                 if len(string_info) > 1:
                     for string in string_info[1:]:
-                        value += string.\
-                            replace('""', '').\
-                            replace('\'', '').\
+                        value += string. \
+                            replace('""', ''). \
+                            replace('\'', ''). \
                             replace(' ', '')
                 if value_map.get(key):
                     value_map[key + '1'] = value
@@ -167,7 +167,7 @@ class NasHandler(object):
                 self.format_data_to_map(model_info, 'Software')
             location_map_list = \
                 self.format_data_to_map(location_info, 'Location')
-            serial_map_list =\
+            serial_map_list = \
                 self.format_data_to_map(model_info, 'Hardware')
             storage_model = \
                 self.format_storage_info(
@@ -274,7 +274,7 @@ class NasHandler(object):
                             total_capacity)
                     status = constants.StoragePoolStatus.NORMAL \
                         if value_array[
-                            constant.POOL_INDEX['status_index']] == 'Yes' \
+                               constant.POOL_INDEX['status_index']] == 'Yes' \
                         else constants.StoragePoolStatus.ABNORMAL
                     pool_model = {
                         'name': value_array[constant.POOL_INDEX['name_index']],
@@ -310,9 +310,8 @@ class NasHandler(object):
                 if not nodes or len(node) < constant.NODE_INDEX['node_len']:
                     break
                 status = constants.ControllerStatus.NORMAL \
-                    if node[
-                           constant.NODE_INDEX[
-                               'status_index']] == 'ONLINE' \
+                    if node[constant.NODE_INDEX[
+                        'status_index']] == 'ONLINE' \
                     else constants.ControllerStatus.OFFLINE
                 controller_model = {
                     'name': node[constant.NODE_INDEX['name_index']],
@@ -376,8 +375,8 @@ class NasHandler(object):
                         alert_model['match_key'] = \
                             hashlib.md5(
                                 (alert_data[constant.ALERT_INDEX['id_index']]
-                                    + severity
-                                    + description).encode()).hexdigest()
+                                 + severity
+                                 + description).encode()).hexdigest()
                         alert_model['resource_type'] = \
                             constants.DEFAULT_RESOURCE_TYPE
             if alert and alert_model and 'CAUSE' in alert:
@@ -769,7 +768,7 @@ class NasHandler(object):
                         + '-' + constants.ShareProtocol.NFS,
                 else:
                     native_share_id = \
-                        nfs.get('Exportname') + '-' +\
+                        nfs.get('Exportname') + '-' + \
                         constants.ShareProtocol.NFS,
                 share = {
                     'name': nfs.get('Exportname'),
